@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>My Proyecto</title>
+<title>home.jsp</title>
 </head>
 <body>
-<h1>Hola a MyServlet</h1>
-<form action="MyServlet" method="post">
-Name: <input type="text" name="yourName" size="20">
-<input type="submit" value="CallServlet" />
-</form>
+<jsp:useBean id="person" type="pe.unsa.epcc.Person" scope="request" />
+Bienvenido <jsp:getProperty name="person" property="name" />,
 </body>
 </html>

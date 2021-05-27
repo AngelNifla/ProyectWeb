@@ -1,6 +1,9 @@
-package edu.unsa.epcc;
+package pe.unsa.epcc;
 
 import java.io.IOException;
+//import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +31,27 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		String yourName = request.getParameter("yourName");
+		
+		Person person = new Person();
+		person.setName(yourName);
+		person.setAge("17");
+		
+		request.setAttribute("person", person);
+		
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher("home.jsp");
+				dispatcher.forward(request, response);
+				
+		
 
+		 
+		/*
+		PrintWriter writer = response.getWriter();
+		writer.println("<h1>Hola "+ yourName + "</h1>");
+		writer.close();		
+		*/
+		}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
