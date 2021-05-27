@@ -1,7 +1,9 @@
 package pe.unsa.epcc;
 
 import java.io.IOException;
+import java.util.ArrayList;
 //import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,11 +35,20 @@ public class MyServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String yourName = request.getParameter("yourName");
 		
+		List<Person> persons = new ArrayList<>();
 		Person person = new Person();
 		person.setName(yourName);
 		person.setAge("17");
 		
+		persons.add(person);
+		
+		person.setName("Jose");
+		person.setAge("20");
+		
+		persons.add(person);
+		
 		request.setAttribute("person", person);
+		request.setAttribute("persons", persons);
 		
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("home.jsp");
